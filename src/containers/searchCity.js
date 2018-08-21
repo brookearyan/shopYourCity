@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchYelp } from '../actions/index';
+import { fetchShops } from '../actions/index';
 
 class SearchCity extends Component {
   constructor(props) {
@@ -17,7 +17,8 @@ class SearchCity extends Component {
 
   onFormSubmit(event) {
     event.preventDefault();
-    console.log('clicked')
+    this.props.fetchShops(this.state.city);
+    console.log(this.state.city)
   }
 
   render() {
