@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { fetchYelp } from '../actions/index';
 
 class SearchCity extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class SearchCity extends Component {
 
   onFormSubmit(event) {
     event.preventDefault();
+    console.log('clicked')
   }
 
   render() {
@@ -37,5 +39,8 @@ class SearchCity extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchShops }, dispatch);
+}
 
-export default SearchCity;
+export default connect(null, mapDispatchToProps)(SearchCity);
