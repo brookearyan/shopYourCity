@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import SearchCity from '../containers/searchCity';
+import NewUser from '../containers/newUser';
 
 export default class App extends Component {
   render() {
     return (
-      <SearchCity />
-      
+      <NewUser />
+
     );
   }
 }

@@ -1,13 +1,9 @@
 import axios from 'axios';
 
-const API_KEY = 'AIzaSyAeQwHqTUoBEFr0hTMUPsIlBvnxAYAictA';
+export const CREATE_USER = 'CREATE_USER';
 
-export const FETCH_SHOPS = 'FETCH_SHOPS';
-
-export function fetchShops(city) {
-  const url = `https://api.citygridmedia.com/content/places/v2/search/where?what=restaurant&where=${city}`;
-  const request = axios.get(url);
-
+export function createUser(state){
+  const url = `http://127.0.0.1:8000/taxationBE/user_infos`;
+  const request = axios.post(url);
   console.log(request)
 }
-//working on API end points for shopping by city
