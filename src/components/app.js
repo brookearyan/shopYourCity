@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import NewUser from '../containers/newUser';
-
-export default class App extends Component {
-  render() {
-    return (
-      <NewUser />
-    );
-  }
-}
+// import React, { Component } from 'react';
+// import NewUser from '../containers/newUser';
+//
+// export default class App extends Component {
+//   render() {
+//     return (
+//       <NewUser />
+//     );
+//   }
+// }
