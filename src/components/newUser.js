@@ -9,6 +9,31 @@ class NewUser extends Component {
       this.props.history.push('/');
     });
   }
+
+  renderField(field) {
+    const { meta: { touched, error } } = field;
+    const className = `form-group ${touched && error ? 'has-danger' : ''}`;
+    return (
+      <div className="form-group has-danger">
+        <label> {field.label} </label>
+        <input
+          className="form-control"
+          type="text"
+          {...field.input}
+         />
+         <div className="text-help">
+          { touched ? error : '' }
+        </div>
+      </div>
+    )
+  }
+  //field states: pristine, touched, invalid
+  onSubmit(values){
+    this.props.createPost(values, () => {
+      this.props.history.push('/');
+    });
+  }
+
   render() {
     const { handleSubmit } = this.props;
 
