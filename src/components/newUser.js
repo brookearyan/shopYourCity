@@ -4,11 +4,6 @@ import { Field, reduxForm } from 'redux-form';
 import { createUser } from '../actions/index';
 
 class NewUser extends Component {
-  onSubmit(values){
-    this.props.createPost(values, () => {
-      this.props.history.push('/');
-    });
-  }
 
   renderField(field) {
     const { meta: { touched, error } } = field;
@@ -29,7 +24,7 @@ class NewUser extends Component {
   }
   //field states: pristine, touched, invalid
   onSubmit(values){
-    this.props.createPost(values, () => {
+    this.props.createUser(values, () => {
       this.props.history.push('/');
     });
   }
@@ -57,11 +52,36 @@ class NewUser extends Component {
          <button type="submit" className="btn btn-primary">
           calculate my taxes!
         </button>
-        // <Link to="/" className="btn btn-danger">
-        //   cancel
-        // </Link>
       </form>
     )
   }
-
 }
+function validate(values) {
+  const errors = {};
+
+  if(!values.salary) {
+    errors.salary = "please enter your annual salary"
+  }
+  if(!values.marital_status) {
+    errors.marital_status = "please enter your marital status"
+  }
+  if(!values.zip_code) {
+    errors.zip_code = "please enter your zip code"
+  }
+  return errors;
+}
+//passed values entered by user as obj
+//validate inputs & returns errors obj, no errors submits form
+
+export default reduxForm({
+  //abbrev for validate: validate,
+  validate,
+  form: 'NewUserForm'
+})(
+  connect(null, { createUser })(NewUser)
+);
+
+
+//validate:
+//--pass single argument (function)
+//--specifies form incase we have multiple forms, must be unique string
